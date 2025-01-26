@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;test/要素取得＋URL取得＋順にアクセス.py&apos;" deleteContents="false" description="Delete resource &apos;test/要素取得＋URL取得＋順にアクセス.py&apos;" element1="/test/要素取得＋URL取得＋順にアクセス.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1737367239173"/>
+</session>

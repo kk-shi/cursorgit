@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialog.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="23"/>
+		<item key="DIALOG_Y_ORIGIN" value="-127"/>
+		<item key="DIALOG_WIDTH" value="1040"/>
+		<item key="DIALOG_HEIGHT" value="1116"/>
+		<item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|-128|3|2|1|50|Yu Gothic UI"/>
+	</section>
+	<section name="NewWizardAction">
+		<section name="NewWizard.dialogBounds">
+		</section>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+		<item key="actionSetFilter" value="true"/>
+		<item key="internalFilter" value="true"/>
+		<item key="uncategorizedFilter" value="true"/>
+	</section>
+	<section name="ImportExportAction">
+		<section name="ImportExportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="740"/>
+			<item key="DIALOG_Y_ORIGIN" value="282"/>
+			<item key="DIALOG_WIDTH" value="788"/>
+			<item key="DIALOG_HEIGHT" value="550"/>
+			<item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|-128|3|2|1|50|Yu Gothic UI"/>
+		</section>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="89"/>
+		<item key="DIALOG_Y_ORIGIN" value="-225"/>
+		<item key="DIALOG_WIDTH" value="1040"/>
+		<item key="DIALOG_HEIGHT" value="1004"/>
+		<item key="DIALOG_FONT_NAME" value="1|Yu Gothic UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|-128|3|2|1|50|Yu Gothic UI"/>
+	</section>
+</section>

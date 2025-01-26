@@ -1,0 +1,106 @@
+print("Hello, World!")
+
+import time
+import csv
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+
+import pandas as pd
+
+from selenium.webdriver.common.by import By
+
+# Seleniumのオプション設定
+options = Options()
+options.add_argument("--headless")  # ヘッドレスモード（ブラウザを非表示にする）
+
+# WebDriverのセットアップ
+
+driver = webdriver.Chrome()
+
+driver.get("https://news.yahoo.co.jp/flash")  # 対象のURLを指定
+
+# ページが完全にロードされるまで待つ
+time.sleep(3)
+
+ # <ul class="newsFeed_list"> 内の <a> タグを取得
+links = driver.find_elements(By.CSS_SELECTOR, "ul.newsFeed_list a")
+urls = [link.get_attribute("href") for link in links if link.get_attribute("href")]
+urls = urls[:3]  # 最初の3件だけを抽出
+
+# 現在のウィンドウを記録
+
+original_window = driver.current_window_handle
+
+# 各リンクのhrefを取得して表示
+
+# CSVファイルの準備
+csv_file = "web_data.csv"  # 出力ファイル名
+with open(csv_file, mode="w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    
+    # ヘッダーの書き込み
+    writer.writerow(["URL", "Title"])
+    
+    # 各URLを順に処理してCSVに書き込む
+    for url in urls:
+        print(f"Processing: {url}")
+        
+        # URLを新しいタブで開く
+        driver.execute_script("window.open(arguments[0]);", url)
+        time.sleep(2)  # ページの読み込み待ち（必要に応じて調整）
+        
+        # 新しいタブに切り替える
+        driver.switch_to.window(driver.window_handles[-1])
+        
+        # 現在のページのURLとタイトルを取得
+        current_url = driver.current_url
+        title = driver.title
+        print(f"URL: {current_url}, Title: {title}")
+        
+        # データをCSVに書き込む
+        writer.writerow([current_url, title])
+        
+        # タブを閉じる
+        driver.close()
+        
+        # 元のタブに戻る
+        driver.switch_to.window(driver.window_handles[0])
+    
+
+import os
+print(f"現在の作業ディレクトリ: {os.getcwd()}")
+    
+# 保存したCSVファイルを読み込み
+csv_file_1 = "web_data.csv"  # 保存したCSVファイル1
+csv_file_2 = "web_data_previous.csv"  # 比較するCSVファイル2    
+
+print(f"csv_file-Load")
+    
+  
+# 2つのCSVファイルをDataFrameとして読み込む
+df1 = pd.read_csv(csv_file_1, encoding='utf8')
+df2 = pd.read_csv(csv_file_2, encoding='utf8')  
+
+print(f"csv_file-Load2")
+
+# 特定の列（URL列）で比較
+diff_new = df1[~df1['URL'].isin(df2['URL'])]
+diff_old = df2[~df2['URL'].isin(df1['URL'])]
+print(f"csv_file:差分比較")
+
+
+print("新しく追加されたURL:")
+print(diff_new)
+
+print("\n削除されたURL:")
+print(diff_old)    
+
+print("run-end")
+
+time.sleep(300)
+
+# WebDriverを終了
+
+driver.quit()

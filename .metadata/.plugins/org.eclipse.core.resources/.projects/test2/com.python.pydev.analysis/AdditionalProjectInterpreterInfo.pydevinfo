@@ -1,0 +1,18 @@
+-- VERSION_5
+-- START DISKCACHE_3
+C:\Users\user\eclipse-workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\test2\com.python.pydev.analysis\v2_indexcache
+hello|1737886995283866600|C:\Users\user\eclipse-workspace\test2\hello.py
+-- END DISKCACHE
+-- START DICTIONARY
+2
+1=C:\Users\user\eclipse-workspace\test2\hello.py
+2=hello
+-- END DICTIONARY
+-- START TREE 1
+2
+ran|1|random_sleep_time!1^213#5*19@
+scr|1|scrape_website!1^24#5*18@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

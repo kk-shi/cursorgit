@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/kk-shi/PythonEclipse.git"/>
+		<item value="https://github.com/kk-shi/python2.git"/>
+		<item value="https://github.com/kk-shi/test.git"/>
+		<item value="file://C:\Users\user\Documents\GitHub"/>
+		<item value="https://github.com/kk-shi/Python.git"/>
+		<item value="https://git@github.com/kk-shi/Python.git"/>
+		<item value="git@github.com:kk-shi/Python.git"/>
+		<item value="git://github.com/kk-shi/Python.git"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\user\eclipse-workspace\test\.git">
+			<item value="empty"/>
+		</list>
+		<list key="C:\Users\user\Documents\GitHub\test\.git">
+			<item value="false"/>
+			<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+			<item value="test"/>
+			<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+			<item value="0000000000000000000000000000000000000000"/>
+			<item value="0"/>
+			<item value="false"/>
+			<item value=""/>
+		</list>
+		<list key="C:\Users\user\Documents\GitHub\test2\.git">
+			<item value="false"/>
+			<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+			<item value="test"/>
+			<item value="kk-shi &lt;arcadia_3090@yahoo.co.jp&gt;"/>
+			<item value="a27995c00ac405529882048faeffc0e83c06a31f"/>
+			<item value="0"/>
+			<item value="false"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>
