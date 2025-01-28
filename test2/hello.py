@@ -1,4 +1,4 @@
-print("Hello, World!!!!")
+print("Hello, World!")
 
 import time
 import random
@@ -20,6 +20,8 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import pandas as pd
 from selenium.webdriver.common.by import By
 
+titlein="TEST"
+urlin="https://www.google.com"
 
 def scrape_website():
 
@@ -58,6 +60,11 @@ def scrape_website():
     original_window = driver.current_window_handle
 
     # 各リンクのhrefを取得して表示
+
+
+
+
+
 
     # CSVファイルの準備
     csv_file = "web_data.csv"  # 出力ファイル名
@@ -153,39 +160,41 @@ def scrape_website():
     if not diff_new.empty:
         print(f"diff-on:{diff_new}")
 
+        create_notification(title,url)
+
 
     
-        # 通知を表示する関数
-        def show_notification():
-            # 通知の表示
-            notification.notify(
-                title=title,
-                message=message,
-                app_name="通知アプリ",
-                timeout=10  # 通知が表示される時間（秒）
-            )
+        # # 通知を表示する関数------------------------------------------------------------------
+        # def show_notification():
+        #     # 通知の表示
+        #     notification.notify(
+        #         title=title,
+        #         message=message,
+        #         app_name="通知アプリ",
+        #         timeout=10  # 通知が表示される時間（秒）
+        #     )
         
-        # URLをFirefoxブラウザで開く関数
-        def open_url_in_firefox():
-            # Firefoxのオプション設定
+        # # URLをFirefoxブラウザで開く関数
+        # def open_url_in_firefox():
+        #     # Firefoxのオプション設定
     
             
-            #Firefoxドライバを起動
-            drivers = webdriver.Chrome(options=chrome_options2)
-            drivers.get(url)
+        #     #Firefoxドライバを起動
+        #     drivers = webdriver.Chrome(options=chrome_options2)
+        #     drivers.get(url)
         
-        # 通知を表示した後、URLを開く処理を行う関数
-        def notify_and_open():
-            show_notification()
-            time.sleep(12)  # 通知が表示されるのを待つ
-            open_url_in_firefox()  # FirefoxでURLを開く
-        # 通知を別スレッドで表示
-        notification_thread = threading.Thread(target=notify_and_open)
-        notification_thread.start()
+        # # 通知を表示した後、URLを開く処理を行う関数
+        # def notify_and_open():
+        #     show_notification()
+        #     time.sleep(12)  # 通知が表示されるのを待つ
+        #     open_url_in_firefox()  # FirefoxでURLを開く
+        # # 通知を別スレッドで表示
+        # notification_thread = threading.Thread(target=notify_and_open)
+        # notification_thread.start()
         
         # メインスレッドで他の処理を行いたい場合は、以下に記述
         # 例: メインプログラムが終了しないようにしておく
-        notification_thread.join()  # スレッドが完了するまで待つ
+        # notification_thread.join()  # スレッドが完了するまで待つ
         #driver.quit()
         # notification.notify(
         #    title = "通知テスト",
@@ -195,6 +204,8 @@ def scrape_website():
         print(f"url:{url}")
 
     else: 
+        create_notification(title,url)
+
         print(f"diff-oｆｆ:{diff_new}")
         print(f"url-off:{url}")
 
@@ -206,6 +217,41 @@ def scrape_website():
     print("run-end")
 
     
+#通知領域の設定---------------------
+def open_browser(titlein,urlin):
+    try:
+        # Chromeオプション設定
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--start-maximized")
+        print(f"urlin:{urlin}")
+
+        # Chromeブラウザを起動
+        driver = webdriver.Chrome(options=chrome_options)
+        driver.get(urlin)  # 開きたいURL
+
+        # メッセージボックスで通知
+    except Exception as e:
+        messagebox.showerror("エラー", f"ブラウザ起動中にエラーが発生しました:\n{str(e)}")
+
+# GUIを作成
+def create_notification(titlein,urlin):
+    # メインウィンドウを作成
+    root = tk.Tk()
+    root.title("更新通知-notify-")
+    root.geometry("300x150")  # ウィンドウサイズ
+
+    # ラベルを追加
+    label = tk.Label(root, text=titlein, font=("Arial", 14))
+    label.pack(pady=10)
+
+    # ボタンを追加
+    button = tk.Button(root, text="ブラウザを開く", command=lambda:open_browser(titlein,urlin), bg="gray", fg="white")
+    button.pack(pady=10)
+
+    # GUIループを開始
+    root.mainloop()
+#通知領域の設定---------------------
+
 
     
 while True:
