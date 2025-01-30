@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from plyer import notification
+import webbrowser
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -22,6 +23,8 @@ from selenium.webdriver.common.by import By
 
 titlein="TEST"
 urlin="https://www.google.com"
+
+loop=0
 
 def scrape_website():
 
@@ -151,7 +154,7 @@ def scrape_website():
         print(f"エラーが発生しました: {e}")
 
     # 通知のタイトルとメッセージ
-    title = "重要なお知らせ"
+    titlein = title
     message = "こちらをクリックして詳細を確認できます"
 
     # 通知に設定するリンク（URL）
@@ -160,7 +163,7 @@ def scrape_website():
     if not diff_new.empty:
         print(f"diff-on:{diff_new}")
 
-        create_notification(title,url)
+        create_notification(titlein,url)
 
 
     
@@ -204,10 +207,9 @@ def scrape_website():
         print(f"url:{url}")
 
     else: 
-        create_notification(title,url)
-
         print(f"diff-oｆｆ:{diff_new}")
         print(f"url-off:{url}")
+        create_notification(titlein,url)
 
 
     time.sleep(1)
@@ -220,14 +222,16 @@ def scrape_website():
 #通知領域の設定---------------------
 def open_browser(titlein,urlin):
     try:
-        # Chromeオプション設定
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--start-maximized")
-        print(f"urlin:{urlin}")
+        # # Chromeオプション設定
+        # chrome_options = webdriver.ChromeOptions()
+        # chrome_options.add_argument("--start-maximized")
+        # print(f"urlin:{urlin}")
 
-        # Chromeブラウザを起動
-        driver = webdriver.Chrome(options=chrome_options)
-        driver.get(urlin)  # 開きたいURL
+        # # Chromeブラウザを起動
+        # driver = webdriver.Chrome(options=chrome_options)
+        # driver.get(urlin)  # 開きたいURL
+
+        webbrowser.open(urlin, new=1)
 
         # メッセージボックスで通知
     except Exception as e:
@@ -241,7 +245,7 @@ def create_notification(titlein,urlin):
     root.geometry("300x150")  # ウィンドウサイズ
 
     # ラベルを追加
-    label = tk.Label(root, text=titlein, font=("Arial", 14))
+    label = tk.Label(root, text=titlein, font=("Arial", 14), wraplength=250)
     label.pack(pady=10)
 
     # ボタンを追加
@@ -255,6 +259,12 @@ def create_notification(titlein,urlin):
 
     
 while True:
-    scrape_website()
-    random_sleep_time = round(random.uniform(10, 30), 3)
-    time.sleep(random_sleep_time)  # 600秒（10分）待機
+
+    if not loop==1:
+        scrape_website()
+        random_sleep_time = round(random.uniform(10, 30), 3)
+        time.sleep(random_sleep_time)  # 600秒（10分）待機
+        loop=loop+1
+    else:
+        print("loop-end")
+        break
